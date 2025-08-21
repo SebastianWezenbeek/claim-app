@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Item Not Received – Submit Claim</h1>
+{% if success %}<p class="flash">Thanks! Your claim was submitted.</p>{% endif %}
+<form action="/claim" method="post">
+  <label>Order ID <input name="order_id" required></label>
+  <label>Email <input type="email" name="customer_email" required></label>
+  <label>Reason
+    <select name="reason">
+      <option>item_not_received</option>
+      <option>damaged</option>
+      <option>wrong_item</option>
+    </select>
+  </label>
+  <label>Details <textarea name="details" rows="4"></textarea></label>
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Claims Dashboard</h1>
+<table>
+  <thead><tr><th>ID</th><th>Order</th><th>Email</th><th>Reason</th><th>Status</th><th>Action</th></tr></thead>
+  <tbody>
+  {% for c in claims %}
+    <tr id="claim-{{c.id}}">
+      <td>{{c.id}}</td><td>{{c.order_id}}</td><td>{{c.customer_email}}</td>
+      <td>{{c.reason}}</td><td>{{c.status}}</td>
+      <td>
+        <form hx-post="/claims/{{c.id}}/status" hx-target="#claim-{{c.id}}" hx-swap="outerHTML">
+          <select name="status">
+            <option {{'selected' if c.status=='new' }}>new</option>
+            <option {{'selected' if c.status=='in_review' }}>in_review</option>
+            <option {{'selected' if c.status=='approved' }}>approved</option>
+            <option {{'selected' if c.status=='rejected' }}>rejected</option>
+          </select>
+          <button type="submit">Save</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

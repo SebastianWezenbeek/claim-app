@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Merchant Login</h1>
+<form hx-post="/login" hx-target="body" hx-swap="none">
+  <label>Email <input name="email" type="email" required></label>
+  <label>Password <input name="password" type="password" required></label>
+  <button type="submit">Sign in</button>
+</form>
+<p class="muted">Dev tip: POST /seed-merchant once to create admin@example.com / admin</p>
+{% endblock %}

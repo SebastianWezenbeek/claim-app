@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+psycopg2-binary
+jinja2
+itsdangerous
+python-multipart
+gradio
+pydantic[email]
